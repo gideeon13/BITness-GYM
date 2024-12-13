@@ -1,0 +1,10 @@
+{
+    "require": {
+        "stripe/stripe-php": "^15.10",
+        "setasign/fpdf": "^1.8",
+        "phpmailer/phpmailer": "^6.9",
+        "tecnickcom/tcpdf": "^6.7",
+        "guzzlehttp/guzzle": "^7.9",
+        "ralouphie/getallheaders": "^3.0"
+    }
+}
