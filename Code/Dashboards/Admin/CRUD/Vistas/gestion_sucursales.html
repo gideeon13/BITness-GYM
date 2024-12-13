@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Sucursales</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">  
+    <link rel="stylesheet" href="../estilos/admin1.css">
+    <script src="../NavbarAdmin/navbarV.js" defer></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+
+        .modal-body label {
+            color: #000000;
+        }
+
+        h1 {
+            color: #3E0D56;
+        }
+
+        button {
+            background-color: #B44DF2;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #7E70C2;
+        }
+
+        table {
+            width: 100%;
+            background-color: black;
+        }
+
+        thead {
+            border: 1px solid black;
+        }
+
+        th {
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        td {
+            background-color: white;
+            text-align: center;
+        }
+
+        .modal-header {
+            background-color: #B44DF2;
+            color: #FFFFFF;
+        }
+
+        .modal-title {
+            color: #000000 !important;
+        }
+
+        h5 {
+            color: #000000;
+        }
+
+        .modal-body {
+            background-color: #F2F2F2;
+        }
+        
+        .btn-primary {
+        background-color: #B44DF2; /* Primary button color */
+        border: none; /* No border */
+    }
+
+    .btn-primary:hover {
+        background-color: #7E70C2; /* Darker shade on hover */
+    }
+
+    #branchTable {
+        font-size: 15px; /* Cambia el tamaño de la fuente */
+        width: 90%; /* Ajusta el ancho de la tabla */
+        margin: auto; /* Centra la tabla */
+    }
+
+    #branchTable th, #branchTable td {
+        padding: 15px; /* Reduce el padding de las celdas */
+    }
+
+    body{
+            margin-left: 250px;
+            background-color: rgb(247, 245, 208);
+        }
+        @media (max-width: 768px) {
+        body {
+                margin-left: 80px;
+             }
+            }
+
+footer {
+  padding: 20px;
+  background-color: #f1f1f1;
+  text-align: center;
+  width: 91%;
+}
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="welcome-background">
+        <div class="welcome-container">
+            <h1>Gestión de Sucursales</h1>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBranchModal">
+                Agregar Sucursal
+            </button>
+            
+<!-- Modal para agregar sucursal -->
+<div class="modal fade" id="addBranchModal" tabindex="-1" aria-labelledby="addBranchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addBranchModalLabel">Agregar Sucursal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="branchForm">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="branchName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="branchName" required>
+                        </div>
+                        <div class="col">
+                            <label for="branchStreet" class="form-label">Calle</label>
+                            <input type="text" class="form-control" id="branchStreet" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="branchLocality" class="form-label">Localidad</label>
+                            <input type="text" class="form-control" id="branchLocality" required>
+                        </div>
+                        <div class="col">
+                            <label for="branchCity" class="form-label">Ciudad</label>
+                            <input type="text" class="form-control" id="branchCity" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="branchPostalCode" class="form-label">Código Postal</label>
+                            <input type="text" class="form-control" id="branchPostalCode" required>
+                        </div>
+                        <div class="col">
+                            <label for="branchPhone" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="branchPhone" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="branchOpeningHour" class="form-label">Horario de Apertura</label>
+                            <input type="time" class="form-control" id="branchOpeningHour" required>
+                        </div>
+                        <div class="col">
+                            <label for="branchClosingHour" class="form-label">Horario de Cierre</label>
+                            <input type="time" class="form-control" id="branchClosingHour" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="branchLatitud" class="form-label">Latitud</label>
+                            <input type="text" class="form-control" id="branchLatitud" required>
+                        </div>
+                        <div class="col">
+                            <label for="branchLongitud" class="form-label">Longitud</label>
+                            <input type="text" class="form-control" id="branchLongitud" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar Sucursal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table class="table table-bordered mt-4" id="branchTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Calle</th>
+            <th>Localidad</th>
+            <th>Ciudad</th>
+            <th>Código Postal</th>
+            <th>Teléfono</th>
+            <th>Horario Apertura</th>
+            <th>Horario Cierre</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody id="branchList">
+        <!-- Las sucursales se cargarán aquí dinámicamente -->
+    </tbody>
+</table>
+
+<!-- Edit Branch Modal -->
+<div class="modal fade" id="editBranchModal" tabindex="-1" role="dialog" aria-labelledby="editBranchModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBranchModalLabel">Editar Sucursal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editBranchForm">
+                    <input type="hidden" id="editBranchId">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editNombre">Nombre</label>
+                            <input type="text" class="form-control" id="editNombre" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editCalle">Calle</label>
+                            <input type="text" class="form-control" id="editCalle" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editLocalidad">Localidad</label>
+                            <input type="text" class="form-control" id="editLocalidad" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editCiudad">Ciudad</label>
+                            <input type="text" class="form-control" id="editCiudad" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editCodigoPostal">Código Postal</label>
+                            <input type="text" class="form-control" id="editCodigoPostal" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editTelefono">Teléfono</label>
+                            <input type="text" class="form-control" id="editTelefono" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editHorarioApertura">Horario de Apertura</label>
+                            <input type="time" class="form-control" id="editHorarioApertura" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editHorarioCierre">Horario de Cierre</label>
+                            <input type="time" class="form-control" id="editHorarioCierre" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="editLatitud">Latitud</label>
+                            <input type="text" class="form-control" id="editLatitud" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="editLongitud">Longitud</label>
+                            <input type="text" class="form-control" id="editLongitud" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer style="background: #333; width: 100%; color: white;">
+    <p>&copy; 2024 BITnessGYM. Todos los derechos reservados.;<br>
+      Click en el logo par ver la pagina
+    </p>
+      <!-- Enlace con botón e imagen -->
+      <a href="../../Raccoon_BITNESS/index.html">
+        <button class="image-button" style="background: transparent; border: transparent;">
+      <img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Example" style="width: 100px; cursor: pointer;">
+      </button>
+    </a>
+</footer>
+
+
+    <!-- jQuery y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Usa solo esta línea -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> <!-- Esto incluye Bootstrap y Popper -->
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Otros JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="../Controladores/crud_sucursal.js"></script>
+    <script src="../Controladores/controlarSesion.js"></script>
+</body>
+</html>

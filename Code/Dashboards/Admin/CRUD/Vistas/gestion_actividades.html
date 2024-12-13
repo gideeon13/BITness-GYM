@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Actividades</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../Controladores/controlarSesion.js" async></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="../Controladores/crud_actividad.js"></script>
+    <script src="../NavbarAdmin/navbarV.js" defer></script> 
+
+   
+    <style>
+       
+        .modal-body label {
+            color: #000000;
+        }
+
+        h1 {
+            color: #3E0D56;
+        }
+
+        button {
+            background-color: #B44DF2;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #7E70C2;
+        }
+
+        table {
+            width: 100%;
+            background-color: black;
+        }
+
+        thead {
+            border: 1px solid black;
+        }
+
+        th {
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        td {
+            background-color: white;
+            text-align: center;
+        }
+
+        .modal-content {
+            max-width: 20vw;
+            
+        }
+
+        .modal-header {
+            background-color: #B44DF2;
+            color: #FFFFFF;
+        }
+
+        .modal-title {
+            color: #000000 !important;
+        }
+
+        h5 {
+            color: #000000;
+        }
+        body{
+            margin-left: 250px;
+            background-color: rgb(247, 245, 208);
+        }
+        @media (max-width: 768px) {
+        body {
+                margin-left: 80px;
+             }
+            }
+
+#taskButtons {
+  margin: 20px;
+}
+
+.task-btn, #delete {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#schedule {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.column {
+  border: 1px solid #ddd;
+  width: 150px;
+  position: relative;
+}
+
+.time-column {
+  background-color: #f0f0f0;
+}
+
+.time-slot {
+  height: 50px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-column {
+  border-left: none;
+  position: relative;
+}
+
+.activity-block {
+  position: absolute;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  overflow: hidden;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+footer {
+  padding: 20px;
+  background-color: #f1f1f1;
+  text-align: center;
+  width: 91%;
+}
+
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="welcome-background">
+        <div class="welcome-container">
+            <h1>Gestión de Actividades</h1>
+            <h3>Calendario de Actividades</h3>
+
+            <!-- Botones de Actividades -->
+            <div id="taskButtons">
+              <button class="task-btn" data-task="boxeo" style="background-color: #FF6F61;">🥊 BOXEO</button>
+              <button class="task-btn" data-task="gap" style="background-color: #FFD700;">🦵 GAP</button>
+              <button class="task-btn" data-task="calistenia" style="background-color: #7FFFD4;">🏋️‍♂️ CALISTENIA</button>
+              <button class="task-btn" data-task="kickboxing" style="background-color: #9370DB;">👊 KICKBOXING</button>
+              <button class="task-btn" data-task="aerobicos" style="background-color: #4682B4;">🤸‍♂️   AEROBICOS</button>
+              <button id="delete" style="background-color: #FF0000;">❌ Eliminar</button>
+              <button id="upload" style="background-color: #32CD32;">⬆️ Subir</button>
+            </div>
+          
+              <!-- Tabla de Horarios -->
+  <div id="schedule">
+    <div class="column time-column">
+      <div class="time-slot"><img style="width: 2rem;" src="../../../assets/img/BITnessGYM_mini.png"></div>
+    </div>
+
+    <div class="column day-column">
+      <div class="time-slot">LUNES</div>
+    </div>
+
+    <div class="column day-column">
+      <div class="time-slot">MARTES</div>
+    </div>
+
+    <div class="column day-column">
+    <div class="time-slot">MIÉRCOLES</div>
+    </div>
+
+    <div class="column day-column">
+    <div class="time-slot">JUEVES</div>
+    </div>
+
+    <div class="column day-column">
+    <div class="time-slot">VIERNES</div>
+    </div>
+
+    <div class="column day-column">
+    <div class="time-slot">SÁBADO</div>
+    </div>
+
+    <div class="column day-column">
+    <div class="time-slot">DOMINGO</div>
+    </div>
+    
+  </div>
+
+            <div id="schedule">
+              <div class="column time-column">
+                <div class="time-slot">0:00</div>
+                <div class="time-slot">1:00</div>
+                <div class="time-slot">2:00</div>
+                <div class="time-slot">3:00</div>
+                <div class="time-slot">4:00</div>
+                <div class="time-slot">5:00</div>
+                <div class="time-slot">6:00</div>
+                <div class="time-slot">7:00</div>
+                <div class="time-slot">8:00</div>
+                <div class="time-slot">9:00</div>
+                <div class="time-slot">10:00</div>
+                <div class="time-slot">11:00</div>
+                <div class="time-slot">12:00</div>
+                <div class="time-slot">13:00</div>
+                <div class="time-slot">14:00</div>
+                <div class="time-slot">15:00</div>
+                <div class="time-slot">16:00</div>
+                <div class="time-slot">17:00</div>
+                <div class="time-slot">18:00</div>
+                <div class="time-slot">19:00</div>
+                <div class="time-slot">20:00</div>
+                <div class="time-slot">21:00</div>
+                <div class="time-slot">22:00</div>
+                <div class="time-slot">23:00</div>
+              </div>
+          
+              <!-- Columnas de los días -->
+              <div class="column day-column" data-day="Lunes"></div>
+              <div class="column day-column" data-day="Martes"></div>
+              <div class="column day-column" data-day="Miercoles"></div>
+              <div class="column day-column" data-day="Jueves"></div>
+              <div class="column day-column" data-day="Viernes"></div>
+              <div class="column day-column" data-day="Sabado"></div>
+              <div class="column day-column" data-day="Domingo"></div>
+            </div>
+          
+            <!-- Modal para horas específicas -->
+            <div id="timeModal" class="modal">
+              <div class="modal-content">
+                <h3>Ingrese la hora de inicio y fin</h3>
+                <label for="startTime">Inicio:</label>
+                <input type="time" id="startTime">
+                <label for="endTime">Fin:</label>
+                <input type="time" id="endTime">
+                <button id="saveTime">Guardar</button>
+                <button id="closeModal">Cancelar</button>
+              </div>
+            </div>
+
+            <footer style="background: #333; width: 100%; color: white;">
+              <p>&copy; 2024 BITnessGYM. Todos los derechos reservados.;<br>
+                Click en el logo par ver la pagina
+              </p>
+                <!-- Enlace con botón e imagen -->
+                <a href="../../Raccoon_BITNESS/index.html">
+                  <button class="image-button" style="background: transparent; border: transparent;">
+                <img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Example" style="width: 100px; cursor: pointer;">
+                </button>
+              </a>
+          </footer>
+
+    <!-- jQuery y Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> <!-- Esto incluye Bootstrap y Popper -->
+    <!-- Otros JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+</body>
+</html>

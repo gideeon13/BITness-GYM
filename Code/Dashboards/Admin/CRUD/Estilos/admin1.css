@@ -1,0 +1,126 @@
+/* admin1.css */
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1542744095-dffb6c9f263e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fG9mZmljZSUyMG1vZGVybmUlMjBkb2d8ZW58MHx8fHwxNjkzMzIwMTU1&ixlib=rb-4.0.3&q=80&w=1080');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Asegúrate de que el body tenga altura completa */
+    font-family: 'Arial', sans-serif; /* Cambia la fuente a Arial */
+    color: #343a40; /* Color del texto general */
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #6f42c1; /* Color violeta oscuro */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Sombra para la barra lateral */
+}
+
+.sidebar a {
+    color: #ffffff; /* Texto blanco */
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.sidebar a:hover {
+    background-color: #5a32a8; /* Color más oscuro al pasar el mouse */
+}
+
+.content {
+    margin-left: 270px; /* Deja espacio para la barra lateral */
+    padding: 20px;
+}
+
+.welcome-background {
+    position: relative;
+    background-color: #6f42c1; /* Color violeta */
+    padding: 20px; /* Espacio interno para el fondo */
+    border-radius: 10px; /* Bordes redondeados para el fondo */
+    margin: 20px 0; /* Espacio alrededor del fondo */
+}
+
+.welcome-container {
+    background-color: rgba(128, 0, 128, 0.8); /* Color violeta con opacidad */
+    color: white;
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para el contenedor */
+}
+
+h1, h2 {
+    color: #ffffff; /* Asegúrate de que los encabezados sean legibles */
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.table th {
+    background-color: #6f42c1; /* Color de fondo para el encabezado de la tabla */
+    color: white; /* Texto blanco en el encabezado */
+}
+
+.table th, .table td {
+    vertical-align: middle; /* Alineación vertical del texto en las celdas */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px; /* Reduce el ancho de la barra lateral en pantallas pequeñas */
+    }
+
+    .content {
+        margin-left: 220px; /* Ajusta el margen izquierdo */
+    }
+
+    .welcome-container {
+        padding: 20px; /* Reduce el padding en pantallas pequeñas */
+    }
+
+    h1 {
+        font-size: 1.5em; /* Reduce el tamaño del texto para pantallas pequeñas */
+    }
+
+    h2 {
+        font-size: 1.2em; /* Reduce el tamaño del texto para pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%; /* La barra lateral ocupa todo el ancho en pantallas muy pequeñas */
+        position: relative; /* Cambia la posición a relativa */
+        height: auto; /* Ajusta la altura a auto */
+    }
+
+    .content {
+        margin-left: 0; /* Elimina el margen izquierdo */
+    }
+
+    .welcome-background {
+        padding: 10px; /* Reduce el padding */
+    }
+
+    .welcome-container {
+        padding: 15px; /* Reduce el padding en pantallas muy pequeñas */
+    }
+
+    h1 {
+        font-size: 1.2em; /* Reduce aún más el tamaño del texto */
+    }
+
+    h2 {
+        font-size: 1em; /* Reduce aún más el tamaño del texto */
+    }
+}

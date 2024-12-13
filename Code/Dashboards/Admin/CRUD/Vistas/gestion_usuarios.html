@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">    
+    <link rel="stylesheet" href="../estilos/admin1.css">
+    <script src="../NavbarAdmin/navbarV.js" defer></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+              body{
+            margin-left: 250px;
+            background-color: rgb(247, 245, 208);
+        }
+        @media (max-width: 768px) {
+        body {
+                margin-left: 80px;
+             }
+            }
+        
+        .modal-body label {
+            color: #000000; /* Cambia los títulos de los campos (labels) a negro */
+        }
+
+        h1 {
+            color: #3E0D56;
+        }
+
+        button {
+            background-color: #B44DF2;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #7E70C2;
+        }
+
+        table {
+            width: 100%;
+            background-color: black;
+            
+        }
+
+        thead {
+            border: 1px solid black;
+            border-radius: 3px;
+
+        }
+
+        th {
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        td {
+            background-color: white;
+            text-align: center;
+        }
+
+        .modal-header {
+            background-color: #B44DF2;
+            color: #FFFFFF;
+        }
+
+        .modal-title {
+            color: #000000 !important; /* Forzamos el color negro */
+        }
+
+        h5 {
+            color: #000000; /* Cambia los títulos h5 a negro */
+        }
+
+
+        .modal-body {
+            background-color: #F2F2F2;
+        }
+
+    /* Table Rows */
+    .table tbody tr:hover {
+        background-color: #F1F1F1; /* Light background on hover */
+        transition: background-color 0.3s; /* Smooth transition */
+    }
+
+    /* Table Cells */
+    .table td {
+        color: #333; /* Text color */
+        vertical-align: middle; /* Align text to the middle */
+    }
+
+    /* Button Styles */
+    .btn {
+        transition: background-color 0.3s; /* Smooth transition for button */
+    }
+
+    .btn-primary {
+        background-color: #B44DF2; /* Primary button color */
+        border: none; /* No border */
+    }
+
+    .btn-primary:hover {
+        background-color: #7E70C2; /* Darker shade on hover */
+    }
+
+    /* Modal Styles */
+    .modal-content {
+        border-radius: 0.5rem; /* Rounded corners for modals */
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background-color: #333;
+      margin: 20px 0;
+    }
+
+    
+footer {
+  padding: 20px;
+  background-color: #f1f1f1;
+  text-align: center;
+  width: 91%;
+}
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="welcome-background">
+        <div class="welcome-container">
+            <h1>Gestión de Usuarios</h1>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
+                Agregar Usuario
+            </button>
+            
+            <!-- Modal para agregar usuario -->
+            <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addUserModalLabel">Agregar Usuario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="userForm">
+                                <!-- Selección de rol -->
+                                <div class="form-group">
+                                    <label for="rol">Rol:</label>
+                                    <select id="rol" name="rol" class="form-control" onchange="showRoleSpecificFields()">
+                                        <option value="">Selecciona un rol</option>
+                                        <option value="admin">Administrador</option>
+                                        <option value="entrenador">Entrenador</option>
+                                        <option value="cliente">Cliente</option>
+                                        <option value="contable">Contable</option>
+                                    </select>
+                                </div>
+            
+                                <!-- Campos comunes para todos los roles -->
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Contraseña:</label>
+                                    <input type="password" id="password" name="password" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ci">Cédula de Identidad:</label>
+                                    <input type="number" id="ci" name="ci" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="altura">Altura:</label>
+                                    <input type="number" id="altura" name="altura" class="form-control" required>
+                                </div>
+
+            
+                                <!-- Contenedores para campos específicos de cada rol -->
+                                <div id="adminFields" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="cargo">Cargo:</label>
+                                        <input type="text" id="cargo" name="cargo" class="form-control">
+                                    </div>
+                                </div>
+            
+                                <div id="trainerFields" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="especialidad">Especialidad:</label>
+                                        <input type="text" id="especialidad" name="especialidad" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="detalles">Detalles:</label>
+                                        <input type="text" id="detalles" name="detalles" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="precio">Precio:</label>
+                                        <input type="text" id="precio" name="precio" class="form-control">
+                                    </div>
+                                </div>
+            
+                                <div id="clientFields" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="estado_sus">Estado Suscripción:</label>
+                                        <select id="estado_sus" name="estado_sus" class="form-control">
+                                            <option value="Activo">Activo</option>
+                                            <option value="Inactivo">Inactivo</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sus_preferida">Suscripción Preferida:</label>
+                                        <input type="text" id="sus_preferida" name="sus_preferida" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="concurrencia">Concurrencia (días de asistencia):</label>
+                                        <input type="number" id="concurrencia" name="concurrencia" class="form-control">
+                                    </div>
+                                </div>
+            
+                                <!-- Campos para contables -->
+                                <div id="contableFields" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="responsabilidad">Responsabilidad:</label>
+                                        <input type="text" id="responsabilidad" name="responsabilidad" class="form-control">
+                                    </div>
+                                </div>                          
+
+                                <button type="submit">Agregar Usuario</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <div class="container mt-5">
+        <div class="table-responsive">
+            <table id="userTable" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Nombre</th>
+                        <th>CI</th>
+                        <th>Altura (cm)</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="userList">
+                    <!-- Aquí se llenarán los datos dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+        <!-- Modal para editar usuario -->
+        <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editUserModalLabel">Editar Usuario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editUserForm">
+                            <input type="hidden" id="editUserId">
+                            <div class="mb-3">
+                                <label for="editEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="editEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editNombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="editNombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editCI" class="form-label">CI</label>
+                                <input type="text" class="form-control" id="editCI" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editAltura" class="form-label">Altura (cm)</label>
+                                <input type="number" class="form-control" id="editAltura" step="0.01" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editRol" class="form-label">Rol</label>
+                                <select class="form-select" id="editRol" required>
+                                    <option value="admin">Administrador</option>
+                                    <option value="cliente">Cliente</option>
+                                    <option value="entrenador">Entrenador</option>
+                                    <option value="contable">Contable</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal para confirmar eliminación -->
+        <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteUserModalLabel">Eliminar Usuario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>    
+
+    <br>
+    <hr>
+    <h1>Gestión de Administradores</h1>
+
+<!-- Tabla de Administradores -->
+<table id="tablaAdmin" class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID Usuario</th>
+            <th>Cargo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody id="adminList">
+        <!-- Aquí se cargarán los administradores -->
+    </tbody>
+</table>
+
+<!-- Modal Editar Admin -->
+<div class="modal fade" id="editAdminModal" tabindex="-1" aria-labelledby="editAdminModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editAdminModalLabel">Editar Administrador</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editAdminForm">
+                    <input type="hidden" id="editAdminId" name="id">
+                    <div class="form-group">
+                        <label for="editAdminCargo">Cargo</label>
+                        <input type="text" class="form-control" id="editAdminCargo" name="cargo" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <br>
+    <hr>
+    <h1>Gestión de Clientes</h1>
+
+    <div class="container mt-5">
+        <div class="table-responsive">
+            <table id="tablaCliente" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Estado Suscrip.</th>
+                        <th>Suscripcion Pref.</th>
+                        <th>Concurrencia</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="clienteList">
+                    <!-- Aquí se llenarán los datos dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Modal de Edición de Cliente -->
+<div class="modal fade" id="editClienteModal" tabindex="-1" role="dialog" aria-labelledby="editClienteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editClienteModalLabel">Editar Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario de Edición -->
+                <form id="editClienteForm">
+                    <div class="form-group">
+                        <label for="editClienteId">ID Cliente</label>
+                        <input type="text" class="form-control" id="editClienteId" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="editClienteEstado">Estado de Suscripción</label>
+                        <select class="form-control" id="editClienteEstado">
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editClienteSuscripcion">Suscripción Preferida</label>
+                        <input type="text" class="form-control" id="editClienteSuscripcion">
+                    </div>
+                    <div class="form-group">
+                        <label for="editClienteConcurrencia">Concurrencia</label>
+                        <input type="number" class="form-control" id="editClienteConcurrencia" min="0">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <br>
+    <hr>
+    <h1>Gestión de Entrenadores</h1>
+
+    <div class="container mt-5">
+        <div class="table-responsive">
+            <table id="tablaEntrenador" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Especialidades</th>
+                        <th>Detalles</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="entrenadorList">
+                    <!-- Aquí se llenarán los datos dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Modal para editar entrenador -->
+<div class="modal fade" id="editEntrenadorModal" tabindex="-1" aria-labelledby="editEntrenadorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editEntrenadorModalLabel">Editar Entrenador</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Formulario de edición de entrenador -->
+          <form id="editEntrenadorForm">
+            <input type="hidden" id="editEntrenadorId" name="id_usuario">
+            
+            <!-- Campo de especialidad -->
+            <div class="mb-3">
+              <label for="editEspecialidad" class="form-label">Especialidad</label>
+              <input type="text" class="form-control" id="editEspecialidad" name="especialidad" required>
+            </div>
+            
+            <!-- Campo de detalles -->
+            <div class="mb-3">
+              <label for="editDetalles" class="form-label">Detalles</label>
+              <textarea class="form-control" id="editDetalles" name="detalles" rows="3" required></textarea>
+            </div>
+            
+            <!-- Campo de precio -->
+            <div class="mb-3">
+              <label for="editPrecio" class="form-label">Precio</label>
+              <input type="number" class="form-control" id="editPrecio" name="precio" required>
+            </div>
+  
+            <!-- Botones de acción -->
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary ms-2">Guardar cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <br>
+    <hr>
+    <h1>Gestión de Contables</h1>
+
+    <div class="container mt-5">
+        <div class="table-responsive">
+            <table id="tablaContable" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Departamento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="contableList">
+                    <!-- Aquí se llenarán los datos dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Modal para Editar Contable -->
+<div class="modal fade" id="editContableModal" tabindex="-1" role="dialog" aria-labelledby="editContableModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editContableModalLabel">Editar Contable</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editContableForm">
+                    <div class="form-group">
+                        <label for="editContableId">ID Contable</label>
+                        <input type="text" id="editContableId" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="editContableDepartamento">Departamento</label>
+                        <input type="text" id="editContableDepartamento" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer style="background: #333; width: 100%; color: white;">
+    <p>&copy; 2024 BITnessGYM. Todos los derechos reservados.;<br>
+      Click en el logo par ver la pagina
+    </p>
+      <!-- Enlace con botón e imagen -->
+      <a href="../../Raccoon_BITNESS/index.html">
+        <button class="image-button" style="background: transparent; border: transparent;">
+      <img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Example" style="width: 100px; cursor: pointer;">
+      </button>
+    </a>
+</footer>
+
+    <!-- jQuery y Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Usa solo esta línea -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> <!-- Esto incluye Bootstrap y Popper -->
+    <!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Otros JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../Controladores/crud_usuario.js"></script>
+<script src="../Controladores/controlarSesion.js"></script>
+    <!-- JS de Tablas -->
+<script src="../Controladores/adminTabla.js"></script>
+<script src="../Controladores/clienteTabla.js"></script>
+<script src="../Controladores/entrenadorTabla.js"></script>
+<script src="../Controladores/contableTabla.js"></script>
+</body>
+</html>

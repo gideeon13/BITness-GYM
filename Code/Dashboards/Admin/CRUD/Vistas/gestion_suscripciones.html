@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Suscripciones</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">  
+    <link rel="stylesheet" href="../estilos/admin1.css">
+    <script src="../NavbarAdmin/navbarV.js" defer></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        
+        .modal-body label {
+            color: #000000; /* Cambia los títulos de los campos (labels) a negro */
+        }
+
+        h1 {
+            color: #3E0D56;
+        }
+
+        table {
+            width: 100%;
+            background-color: black;
+        }
+
+        thead {
+            border: 1px solid black;
+            border-radius: 3px;
+        }
+
+        th {
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        td {
+            background-color: white;
+            text-align: center;
+        }
+
+        .modal-header {
+            background-color: #B44DF2;
+            color: #FFFFFF;
+        }
+
+        .modal-title {
+            color: #000000 !important;
+        }
+
+        h5 {
+            color: #000000;
+        }
+
+        .modal-body {
+            background-color: #F2F2F2;
+        }
+
+
+        .container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin: auto;
+        }
+
+        .container h1{
+            margin: auto;
+            position: absolute;
+            margin-left: 60px;
+            
+        }
+
+        .card {
+            margin-top: 100px;
+            width: 300px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .card-header {
+            background-color: #7E70C2;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-body h2 {
+            margin: 10px 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .card-body p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .divider {
+            width: 80%;
+            height: 1px;
+            background-color: #ddd;
+            margin: 10px auto;
+        }
+
+        .card-footer {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card-footer button {
+            color: #7E70C2;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+        }
+
+        .card-footer button:hover {
+            text-decoration: underline;
+        }
+
+        .table-wrapper {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .table th {
+            background-color: #B44DF2;
+            color: white;
+        }
+        .btn {
+            border-radius: 5px;
+        }
+        .modal-header {
+            background-color: #007bff;
+            color: white;
+        }
+
+        body{
+            margin-left: 250px;
+            background-color: rgb(247, 245, 208);
+        }
+        @media (max-width: 768px) {
+        body {
+                margin-left: 80px;
+             }
+            }
+
+            footer {
+  padding: 20px;
+  background-color: #f1f1f1;
+  text-align: center;
+  width: 91%;
+}
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <section class="welcome-background">
+    <div class="welcome-container">
+        <h1>Gestión de Suscripciones</h1>
+        <button class="btn btn-primary mt-3" id="createSubscriptionBtn">Crear Suscripción</button>
+        <table id="subList" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID Suscripción</th>
+                    <th>ID Usuario</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas se llenarán dinámicamente -->
+            </tbody>
+        </table>
+
+    </div>
+
+<!-- Modal para crear una nueva suscripción -->
+<div class="modal fade" id="createSubModal" tabindex="-1" role="dialog" aria-labelledby="createSubModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createSubModalLabel">Crear Suscripción</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createSubForm">
+                    <!-- ID de Suscripción como Select -->
+                    <div class="form-group">
+                        <label for="createSubId">ID Suscripción</label>
+                        <select class="form-control" id="createSubId" required>
+                            <!-- Opciones se llenarán dinámicamente -->
+                        </select>
+                    </div>
+                    <!-- ID Usuario como Select -->
+                    <div class="form-group">
+                        <label for="createIdUsuario">ID Usuario</label>
+                        <select class="form-control" id="createIdUsuario" required>
+                            <!-- Opciones se llenarán dinámicamente -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="createFechaInicio">Fecha de Inicio</label>
+                        <input type="date" class="form-control" id="createFechaInicio" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="createFechaFin">Fecha de Fin</label>
+                        <input type="date" class="form-control" id="createFechaFin" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="createSubscription">Crear Suscripción</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="modal fade" id="editSubModal" tabindex="-1" role="dialog" aria-labelledby="editSubModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editSubModalLabel">Editar Suscripción</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <!-- ID de Suscripción como Select -->
+                        <div class="form-group">
+                            <label for="editSubId">ID Suscripción</label>
+                            <select class="form-control" id="editSubId"></select>
+                        </div>
+                        <!-- ID Usuario como readonly -->
+                        <div class="form-group">
+                            <label for="editIdUsuario">ID Usuario</label>
+                            <input type="text" class="form-control" id="editIdUsuario" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="editFechaInicio">Fecha de Inicio</label>
+                            <input type="date" class="form-control" id="editFechaInicio">
+                        </div>
+                        <div class="form-group">
+                            <label for="editFechaFin">Fecha de Fin</label>
+                            <input type="date" class="form-control" id="editFechaFin">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="saveChanges">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="container">
+            <h1>Editar Planes Suscripciones</h1>
+            <!-- Tarjeta 1 -->
+            <div class="card" data-tuplas="1,2">
+                <div class="card-header" contenteditable="true" id="categoria1">ESTÁNDAR</div>
+                <div class="card-body">
+                    <h2><span contenteditable="false">USD$</span><span id="precioMensual1" contenteditable="true">100</span></h2>
+                    <p>per month</p>
+                    <div class="divider"></div>
+                    <h2><span contenteditable="false">USD$</span><span id="precioAnual1" contenteditable="true">1200</span></h2>
+                    <p>per year</p>
+                    <div class="divider"></div>
+                    <p contenteditable="true" id="descripcion1">1 actividad pagada</p>
+                </div>
+                <div class="card-footer">
+                    <button class="guardar" data-card="1">Guardar Cambios</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="card" data-tuplas="3,4">
+                <div class="card-header" contenteditable="true" id="categoria2">AVANZADA</div>
+                <div class="card-body">
+                    <h2><span contenteditable="false">USD$</span><span id="precioMensual2" contenteditable="true">200</span></h2>
+                    <p>per month</p>
+                    <div class="divider"></div>
+                    <h2><span contenteditable="false">USD$</span><span id="precioAnual2" contenteditable="true">2400</span></h2>
+                    <p>per year</p>
+                    <div class="divider"></div>
+                    <p contenteditable="true" id="descripcion2">3 actividades pagadas</p>
+                </div>
+                <div class="card-footer">
+                    <button class="guardar" data-card="2">Guardar Cambios</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="card" data-tuplas="5,6">
+                <div class="card-header" contenteditable="true" id="categoria3">HARDCORE</div>
+                <div class="card-body">
+                    <h2><span contenteditable="false">USD$</span><span id="precioMensual3" contenteditable="true">300</span></h2>
+                    <p>per month</p>
+                    <div class="divider"></div>
+                    <h2><span contenteditable="false">USD$</span><span id="precioAnual3" contenteditable="true">3600</span></h2>
+                    <p>per year</p>
+                    <div class="divider"></div>
+                    <p contenteditable="true" id="descripcion3">Acceso a todas las máquinas</p>
+                </div>
+                <div class="card-footer">
+                    <button class="guardar" data-card="3">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #333; width: 100%; color: white;">
+        <p>&copy; 2024 BITnessGYM. Todos los derechos reservados.;<br>
+          Click en el logo par ver la pagina
+        </p>
+          <!-- Enlace con botón e imagen -->
+          <a href="../../Raccoon_BITNESS/index.html">
+            <button class="image-button" style="background: transparent; border: transparent;">
+          <img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Example" style="width: 100px; cursor: pointer;">
+          </button>
+        </a>
+    </footer>
+
+    <!-- jQuery y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Usa solo esta línea -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> <!-- Esto incluye Bootstrap y Popper -->
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Otros JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="../Controladores/crud_suscripcion.js"></script>
+    <script src="../Controladores/crud_paga.js"></script>
+    <script src="../Controladores/controlarSesion.js"></script>
+</body>
+</html>
+

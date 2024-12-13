@@ -1,0 +1,70 @@
+#navbar-container {
+  position: relative;
+  top: 0;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 200px; 
+}
+
+/* Estilos generales de la barra-lateral */
+.barra-lateral {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #3E0D56;
+  color: #FFD500;
+  padding-top: 20px;
+  z-index: 9999;
+  transition: width 0.3s;
+}
+
+.barra-lateral a {
+  margin: 0 30px;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #FFD500;
+  display: flex;
+  align-items: center;
+  transition: padding 0.3s;
+}
+
+span{
+  margin-left: 0;
+  text-align: start;
+
+}
+
+
+.barra-lateral a:hover {
+  background-color: #26141D;
+  color: #FFD500;
+}
+
+.barra-lateral i {
+  margin-right: 10px;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .barra-lateral {
+      width: 80px;
+  }
+
+  .barra-lateral a {
+      justify-content: center;
+      padding: 10px;
+      font-size: 0;
+  }
+
+  .barra-lateral a i {
+      font-size: 24px;
+      margin-right: 0;
+  }
+
+  .barra-lateral a span {
+      display: none;
+  }
+}
