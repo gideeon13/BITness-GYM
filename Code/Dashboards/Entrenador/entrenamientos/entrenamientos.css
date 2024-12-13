@@ -1,0 +1,174 @@
+/* Estilos de la Sección de Entrenamiento */
+.training-section {
+    margin-top: 2rem;
+}
+
+.training-grid {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.add-training-btn {
+    width: 200px;
+    height: 200px;
+    background: rgba(209, 168, 255, 0.1);
+    border: 2px dashed var(--soft-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-training-btn span {
+    font-size: 3rem;
+    color: var(--soft-purple);
+}
+
+.add-training-btn:hover {
+    background: rgba(209, 168, 255, 0.2);
+}
+
+/* Estilos de Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background: var(--black-color-2);
+    margin: 2rem auto;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 800px;
+    border: 2px solid var(--soft-purple);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--soft-purple);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.training-name-input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--soft-purple);
+    color: white;
+}
+
+.exercise-list {
+    margin-bottom: 1rem;
+}
+
+.exercise-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+}
+
+.exercise-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.exercise-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.series-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.muscle-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.muscle-tag {
+    background: rgba(209, 168, 255, 0.2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+/* Estilos de la Cuadrícula de Ejercicios */
+.exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.exercise-option {
+    position: relative;
+    cursor: pointer;
+}
+
+.exercise-option img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.exercise-option h4 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 1rem auto;
+    }
+
+    .exercise-item {
+        grid-template-columns: 1fr;
+    }
+
+    .exercise-controls {
+        flex-direction: column;
+    }
+}

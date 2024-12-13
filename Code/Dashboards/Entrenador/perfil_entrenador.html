@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Entrenador</title>
+    <link rel="stylesheet" href="perfil_entrenador.css">
+    <link rel="stylesheet" href="entrenamientos/entrenamientos.css">
+    <link rel="icon" href="../../assets/img/BITnessGYM_mini.png" type="image/png">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Trainer Card Preview -->
+        <section class="window-frame trainer-card-section">
+            <div class="window-header">
+                <div class="window-buttons">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="window-title">ENTRENADORES.EXE</div>
+            </div>
+            <div class="trainer-card">
+                <img id="cardProfileImage" src="" alt="Trainer" class="trainer-photo">
+                <div class="trainer-price">50 /mes</div>
+                <div class="trainer-info">
+                    <h2 id="cardName"></h2>
+                    <div id="cardSpecialties" class="specialties-tags"></div>
+                    <div class="trainer-stats">
+                        <span id="cardExperience">🏆 6 años exp.</span>
+                        <span id="cardFormat">📍 Presencial</span>
+                    </div>
+                </div>
+                <button class="neon-button">Ver Perfil</button>
+            </div>
+        </section>
+
+        <!-- Full Profile View -->
+        <section class="window-frame profile-section">
+            <div class="window-header">
+                <div class="window-buttons">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="window-title">PERFIL.EXE</div>
+            </div>
+            <div class="profile-grid">
+                <div class="profile-left">
+                    <div class="trainer-header">
+                        <img id="profileImage" src="" alt="Perfil" class="profile-pic">
+                        <div class="trainer-info">
+                            <h2 id="profileName"></h2>
+                            <p id="profileDetails"></p>
+                            <p id="profilePhone"></p>
+                        </div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <span class="stat-icon">⭐</span>
+                            <span id="profileRating">4.9</span>
+                            <span>Rating</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-icon">🏆</span>
+                            <span id="profileExperience"></span>
+                            <span>Experiencia</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-icon">📍</span>
+                            <span id="profileFormat"></span>
+                            <span>Formato</span>
+                        </div>
+                    </div>
+                    <div class="info-section">
+                        <h3>Especialidades</h3>
+                        <div id="profileSpecialty" class="specialty-tags"></div>
+                    </div>
+                    <div class="info-section">
+                        <h3>Disponibilidad</h3>
+                        <div id="profileAvailability" class="availability-box"></div>
+                    </div>
+                    <div class="info-section">
+                        <h3>Certificaciones</h3>
+                        <div id="profileCertifications" class="certifications-list"></div>
+                    </div>
+                    <button class="connect-button">CONECTAR CON ENTRENADOR</button>
+                </div>
+                <div class="profile-right">
+                    <div id="carouselImages" class="profile-carousel"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Edit Profile Form -->
+        <section class="window-frame edit-section">
+            <div class="window-header">
+                <div class="window-buttons">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="window-title">EDITAR_PERFIL.EXE</div>
+            </div>
+            <form id="profileForm" class="edit-form">
+                <div class="form-group">
+                    <label for="foto_perfil">Foto de perfil:</label>
+                    <div id="dropZonePerfil" class="drop-zone">
+                        <div class="drop-zone-content">
+                            <span class="drop-zone-icon">📸</span>
+                            <p>Arrastra y suelta tu foto de perfil aquí o haz clic para seleccionar</p>
+                        </div>
+                        <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*" hidden>
+                        <div id="previewPerfil" class="preview-container"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Especialidades (máximo 5):</label>
+                    <div id="especialidadesContainer" class="especialidades-container"></div>
+                    <button type="button" id="addEspecialidad" class="add-button">+ Agregar Especialidad</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required 
+                           pattern="[\+]?[0-9]{8,15}" 
+                           placeholder="+598XXXXXXXX">
+                </div>
+
+                <div class="form-group">
+                    <label for="certificaciones">Certificaciones:</label>
+                    <input type="text" id="certificaciones" name="certificaciones" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="detalles">Detalles:</label>
+                    <textarea id="detalles" name="detalles" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="precio">Precio por mes:</label>
+                    <input type="number" id="precio" name="precio" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="disponibilidad_dia">Disponibilidad (días):</label>
+                    <input type="text" id="disponibilidad_dia" name="disponibilidad_dia" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="disponibilidad_hora">Disponibilidad (horas):</label>
+                    <input type="text" id="disponibilidad_hora" name="disponibilidad_hora" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="anos_experiencia">Años de experiencia:</label>
+                    <input type="number" id="anos_experiencia" name="anos_experiencia" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="formato">Formato de entrenamiento:</label>
+                    <input type="text" id="formato" name="formato" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fotos_carousel">Fotos del carrusel:</label>
+                    <div id="dropZoneCarousel" class="drop-zone">
+                        <div class="drop-zone-content">
+                            <span class="drop-zone-icon">🖼️</span>
+                            <p>Arrastra y suelta tus fotos para el carrusel aquí o haz clic para seleccionar</p>
+                        </div>
+                        <input type="file" id="fotos_carousel" name="fotos_carousel[]" accept="image/*" multiple hidden>
+                    </div>
+                    <div id="previewCarousel" class="preview-grid"></div>
+                </div>
+
+                <button type="submit" class="save-button">Guardar Cambios</button>
+            </form>
+        </section>
+    </div>
+ <!-- Sección de Entrenamientos -->
+ <section class="window-frame training-section">
+    <div class="window-header">
+        <div class="window-buttons">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="window-title">MIS ENTRENAMIENTOS.exe</div>
+    </div>
+    <div class="training-grid" id="listaEntrenamientos">
+        <!-- Los entrenamientos se cargarán aquí dinámicamente -->
+    </div>
+    <button id="btnAgregarEntrenamiento" class="add-training-btn">
+        <span>+</span>
+    </button>
+</section>
+
+<!-- Modal 1: Editor de Entrenamiento -->
+<div id="modalEntrenamiento" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>CREA TU ENTRENAMIENTO</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <input type="text" id="nombreEntrenamiento" placeholder="Nombre del entrenamiento" class="training-name-input">
+            <div class="exercise-list" id="listaEjercicios">
+                <!-- Los ejercicios se cargarán aquí dinámicamente -->
+            </div>
+            <button id="btnAgregarEjercicio" class="add-exercise-btn">+ Agregar un ejercicio</button>
+            <button id="btnConfirmarEntrenamiento" class="confirm-btn">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2: Selector de Ejercicios -->
+<div id="modalSelectorEjercicios" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>ELIGE UN EJERCICIO</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar ejercicio..." id="busquedaEjercicio">
+                <select id="filtroMusculos">
+                    <option value="">Todos los músculos</option>
+                    <!-- Opciones de músculos se cargarán dinámicamente -->
+                </select>
+            </div>
+            <div class="exercise-grid" id="gridEjercicios">
+                <!-- Los ejercicios se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 3: Detalles del Ejercicio -->
+<div id="modalDetalleEjercicio" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>DETALLES DEL EJERCICIO</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="exercise-gif">
+                <img id="gifEjercicio" src="" alt="Demostración del ejercicio">
+            </div>
+            <div class="exercise-info">
+                <img id="imgMusculoEjercicio" src="" alt="Músculos trabajados">
+                <div class="exercise-details">
+                    <h3 id="nombreEjercicio"></h3>
+                    <p id="equipamientoEjercicio"></p>
+                    <div id="musculosEjercicio" class="muscle-tags"></div>
+                </div>
+            </div>
+            <button id="btnAgregarAEntrenamiento" class="confirm-btn">Agregar ejercicio</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<footer style="background: #333; width: 100%; color: white;">
+    <p>&copy; 2024 BITnessGYM. Todos los derechos reservados.;<br>
+      Click en el logo par ver la pagina
+    </p>
+      <!-- Enlace con botón e imagen -->
+      <a href="../../Raccoon_BITNESS/index.html">
+        <button class="image-button" style="background: transparent; border: transparent;">
+      <img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Example" style="width: 100px; cursor: pointer;">
+      </button>
+    </a>
+</footer>
+
+<script src="../../config/jquery-3.7.1.min.js"></script> 
+<script src="entrenamientos/entrenamientos.js"></script>
+<script src="perfil_entrenador.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,333 @@
+:root {
+    --neon-purple: #b413ec;
+    --neon-purple-glow: #d1a8ff;
+    --dark-bg: #1a1a1a;
+    --darker-bg: #0a0a0a;
+    --border-purple: rgba(180, 19, 236, 0.5);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: var(--darker-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Window Frame Styles */
+.window-frame {
+    background: var(--dark-bg);
+    border: 2px solid var(--neon-purple);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(180, 19, 236, 0.2);
+}
+
+.window-header {
+    background: var(--neon-purple);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.window-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.window-buttons span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--darker-bg);
+}
+
+.window-title {
+    color: var(--darker-bg);
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+}
+
+/* Trainer Card Styles */
+.trainer-card {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 20px;
+    position: relative;
+}
+
+.trainer-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 2px solid var(--neon-purple);
+    border-radius: 8px;
+}
+
+.trainer-price {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--neon-purple);
+    color: var(--darker-bg);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.trainer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.specialties-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.specialty-tag {
+    background: rgba(180, 19, 236, 0.2);
+    border: 1px solid var(--neon-purple);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.trainer-stats {
+    display: flex;
+    gap: 20px;
+    color: var(--text-secondary);
+}
+
+/* Profile View Styles */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 20px;
+}
+
+.profile-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.trainer-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--neon-purple);
+    object-fit: cover;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.stat-box {
+    background: rgba(180, 19, 236, 0.1);
+    border: 1px solid var(--border-purple);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-icon {
+    font-size: 1.5em;
+}
+
+.info-section {
+    background: rgba(180, 19, 236, 0.1);
+    border: 1px solid var(--border-purple);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.info-section h3 {
+    color: var(--neon-purple-glow);
+    margin-bottom: 15px;
+}
+
+.profile-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    height: 100%;
+}
+
+.profile-carousel img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 2px solid var(--border-purple);
+    border-radius: 8px;
+}
+
+/* Form Styles */
+.edit-form {
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--neon-purple-glow);
+}
+
+input, textarea {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-purple);
+    padding: 10px;
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--neon-purple);
+}
+
+.drop-zone {
+    border: 2px dashed var(--border-purple);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.drop-zone:hover {
+    border-color: var(--neon-purple);
+    background: rgba(180, 19, 236, 0.1);
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.preview-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 2px solid var(--neon-purple);
+}
+
+/* Buttons */
+.neon-button, .connect-button, .save-button {
+    background: var(--neon-purple);
+    color: var(--darker-bg);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.neon-button:hover, .connect-button:hover, .save-button:hover {
+    box-shadow: 0 0 20px var(--neon-purple);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .trainer-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .trainer-photo {
+        margin: 0 auto;
+    }
+    
+    .trainer-stats {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .trainer-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-carousel {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .window-frame {
+        margin: 0;
+    }
+    
+    .trainer-photo {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+footer {
+    padding: 20px;
+    background-color: #f1f1f1;
+    text-align: center;
+    width: 91%;
+  }
+  
