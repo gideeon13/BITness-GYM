@@ -1,0 +1,103 @@
+/* Fuente DIGITAL */
+@font-face {
+    font-family: 'DIGITAL';
+    src: url('../assets/fonts/ChicagoFLF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'Courier New', monospace;
+}
+
+/* Fuente SPORT */
+@font-face {
+    font-family: 'SPORT';
+    src: url('../assets/fonts/Groning.otf') format('opentype'); /* Cambiado el formato a 'opentype' */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Fuente ROUND */
+@font-face {
+    font-family: 'ROUND';
+    src: url('../assets/fonts/GeometrisRound-RegularSemCond.ttf') format('truetype'); /* Cambiado el formato a 'opentype' */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ROUND-BOLD';
+    src: url('../assets/fonts/GeometrisRound-MdSmCnObl.ttf') format('truetype'); /* Cambiado el formato a 'opentype' */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+:root { 
+  /*colores*/
+ --white-color:  #fff;
+ --black-color: #464545;
+ --black-color-1: #2b2b2b;
+ --black-color-2: #151515;
+ --soft-black: rgba(0, 0, 0, 0.247);
+
+ --logo-yellow:  #ffd500;
+ --logo-purple: #2f0b41;
+ --logo-blue:  #7e70c2;
+
+ --medium-gray-color:  #fdfcf8;
+ --soft-purple:  #d8c2f5;
+ --dark-purple: #2f003d80;
+  
+
+ /*tamanios de fuentes*/
+ --font-size-s: 0.9rem;
+ --font-size-n: 1rem;
+ --font-size-m: 1.15rem;
+ --font-size-l: 1.5rem;
+ --font-size-xl: 2rem;    
+ --font-size-xxl: 8rem;
+
+ /*Pesos de fuentes*/
+ --font-wheight-normal: 400;
+ --font-wheight-medium: 500;
+ --font-wheight-semibold: 600;
+ --font-wheight-bold: 700;
+
+ /*Radio de bordes*/
+ --border-radius-s: 8px;
+ --border-radius-m: 30px;
+ --border-radius-circle: 50%;
+
+ --border-width-s: 0.2rem;
+ --border-width-m: 0rem
+
+}
+
+
+
+
+
+
+/* Estiliza la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 20px; /* Ancho de la barra de desplazamiento */
+  }
+  
+  /* Estiliza el thumb (la parte que se mueve) */
+  ::-webkit-scrollbar-thumb {
+    background-color: #d1a8ff; /* Cambia el color cuando se hace hover */
+    border: 3px solid #000000;
+    border-radius: 3px; /* Bordes redondeados */
+  }
+  
+  /* Estiliza el track (la pista por donde se mueve el thumb) */
+  ::-webkit-scrollbar-track {
+    background-color: #ffffff; /* Color del fondo del scroll */
+    border-left:3px solid #000000;
+    border-right:3px solid #000000;
+  }
+  
+  /* Estilo para cuando el thumb es "hovered" (al pasar el cursor por encima) */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #000000; /* Cambia el color cuando se hace hover */
+  
+  }
