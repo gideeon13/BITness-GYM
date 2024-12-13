@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BITnessGYM - Entrenadores</title>
+    <link rel="icon" href="../../assets/img/BITnessGYM_mini.png" type="image/png">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/cards.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/search.css">
+    <script src="../../config/jquery-3.7.1.min.js"></script>
+    <script src="entrenadoresC.js" defer></script>
+</head>
+<body>
+    <div class="grid-background">
+        <div class="grid-overlay"></div>
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+    </div>
+
+    <main>
+        <!-- Buscador -->
+        <section class="search-section window-frame">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span></span><span></span><span></span>
+                </div>
+                <h2>BITnessGYM.exe</h2>
+            </div>
+            <div class="search-content">
+                <h1 class="typewriter">Encuentra tu entrenador ideal...</h1>
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar por nombre, especialidad...">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lista de Entrenadores -->
+        <section class="trainers-section window-frame">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span></span><span></span><span></span>
+                </div>
+                <h2>ENTRENADORES.exe</h2>
+            </div>
+            <div class="card-container"></div>
+        </section>
+
+        <!-- Perfil del Entrenador -->
+        <section class="profile-section window-frame">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span></span><span></span><span></span>
+                </div>
+                <h2>PERFIL.exe</h2>
+            </div>
+            
+            <div class="profile-content">
+                <div class="profile-left">
+                    <div class="trainer-header">
+                        <h2 id="profileName"></h2>
+                        <p id="profileDetails" class="trainer-bio"></p>
+                    </div>
+                    
+                    <div class="trainer-stats">
+                        <div id="profileExperience" class="stat-item"></div>
+                        <div id="profileFormat" class="stat-item"></div>
+                        <div id="profileAvailability" class="stat-item"></div>
+                    </div>
+
+                    <div class="specialties-section">
+                        <h3>Especialidades</h3>
+                        <div id="profileSpecialty" class="tags-container"></div>
+                    </div>
+
+                    <div class="certifications-section">
+                        <h3>Certificaciones</h3>
+                        <div id="profileCertifications" class="certs-container"></div>
+                    </div>
+
+                    <button class="contact-btn">Contactar Entrenador</button>
+                </div>
+
+                <div class="profile-right">
+                    <div class="carousel-container"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
