@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../Users/Registro/registroC.js" ></script> <!-- Enlace a tu archivo JavaScript -->
+    <script src="../../Users/redireccion.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../Users/formulario.css"> <!-- Enlace a archivo CSS -->
+</head>
+<body>
+    
+    <main>
+        <div class="contenedor-modal">
+                <!--mensajes para cambiar de formulario-->
+                <div class="contenedor-mensaje">
+                    <div class="mensaje-ir-login">
+                        <h3>Ya tienes una cuenta?</h3>
+                        <button id="btn-ir-login">Ir al login</button>
+                    </div>
+
+                    <div class="mensaje-ir-registro">
+                        <h3>No tienes cuenta?</h3>
+                        <button id="btn-ir-registro">Ir al registro</button>
+                    </div>
+                </div>
+
+                <!--formularios de login y registro-->
+                <div class="contenedor-form" method="POST" action="">
+                
+                <!-- Formulario de Login -->
+                    <form class="log-form" method="POST">
+                        <h1>Login</h1>
+                        <input type="email" placeholder="Correo Electrónico" name="correo" required>
+                        <p class="LoginEmailError error-message">err</p>
+                        
+                        <div class="password-container">
+                            <input type="password" id="login-password" placeholder="Contraseña" name="contrasena" required>
+                            <button id="toggleLoginPassword" type="button">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <p class="LoginPasswordError error-message">err</p>
+
+                        <button id="logearse-boton">Log in</button>
+                    </form>
+
+                <!-- Formulario de Registro -->
+                    <form class="registro-form" method="POST" action="">
+                        <h1>Registro</h1>
+                        <input type="text" placeholder="Nombre" name="nombre_usuario" required>
+                        <p class="NombreUserError error-message">err</p>
+                        
+                        <input type="email" placeholder="Correo Electrónico" id="Correo" name="correo" required>
+                        <p class="EmailError error-message"></p>
+                        
+                        <div class="password-container">
+                            <input id="input-registro-pwrd" type="password" placeholder="Contraseña" name="contrasena" required>
+                            <button id="toggleRegistroPassword" type="button">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <p class="PasswordError error-message"></p>
+                        
+                        <input type="password" placeholder="Confirmar Contraseña" id="ConfirmarC" required>
+                        <p class="ConfirmPasswordError error-message"></p>
+
+                        <button id="registrarse-boton">Registrarse</button>
+                    </form>
+
+                </div>
+        </div>
+    </main>
+
+</body>
+</html>

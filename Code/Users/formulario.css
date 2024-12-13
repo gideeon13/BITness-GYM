@@ -1,0 +1,265 @@
+/* Estilos generales */
+
+main {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: ROUND;
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 20%;
+}
+
+.modal {
+    display: none; /* Oculta el modal por defecto */
+    position: fixed;
+    z-index: 1000000000000000000;
+    left: 0;
+    top: 0px;
+    width: 100vw;
+    height: 100vw;
+    overflow: scroll;
+    background-color: rgb(0,0,0); /* Fondo oscuro */
+    background-color: rgba(0,0,0,0.4); /* Fondo oscuro   con opacidad */
+    justify-content: center;
+  }
+  
+  .modal-body {
+    height: auto;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    margin-top: 100px;
+    transform: scale(0.85); /* 1.2 es un ejemplo para agrandarlo un 20% */
+    transform-origin: center; /* Escala desde el centro */
+  }
+  
+
+  
+
+
+.contenedor {
+    width: 100%;
+    max-width: 800px;   
+    margin: auto;
+    position: relative;
+
+}
+
+.contenedor-mensaje {
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    background-color: #7E70C2;
+    border: 3px solid black;
+    height: 300px;
+}
+
+.contenedor-mensaje div {
+    margin: auto;
+    transition: all 500ms;
+}
+
+.contenedor-mensaje div h3,
+.contenedor-mensaje div button {
+    margin-top: 30px;
+}
+
+.contenedor-mensaje h3 {
+    color: black;
+    margin: auto;
+}
+
+.contenedor-mensaje button {
+    padding: 10px 40px;
+    border: 3px solid white;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    color: white;
+    border-radius: 6px;
+    transition: all 300ms;
+    width: 200px;
+    font-family: ROUND;
+}
+
+.contenedor-mensaje button:hover {
+    border-color: #3E0D56;
+    background: #B44DF2;
+    color: #3E0D56;
+}
+
+/* Formularios */
+.contenedor-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    top: -170px;
+    left: 0px;
+    transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    
+}
+
+.contenedor-form form {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 10px;
+    padding-bottom: 50px;
+    border-radius: 8px;
+    border: 0px solid #3E0D56; /* Borde oscuro similar al formulario */
+    box-shadow: -4px -4px 10px rgba(0, 0, 0, 0.3), /* Sombra abajo y a la izquierda */
+                4px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra abajo y a la derecha */
+}
+
+.contenedor-form h1 {
+    font-family: DIGITAL;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-right: 25px;
+    color: rgb(15, 23, 42); /* Ajustando color */
+}
+
+.contenedor-form input {
+    width: 90%;
+    margin-top: 10px;
+    padding: 10px;
+    border: 3px solid black; /* Borde oscuro */
+    background: #ffffff;
+    font-size: 16px;
+    position: relative;
+    top: -3px;
+    left: -3px;
+    transition: all 200ms ease;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: -5px 5px 0px 0px black;
+    font-family: ROUND;
+}
+
+
+
+/* Input enfocado */
+.contenedor-form input:focus {
+    top: 0px;
+    left: 0px;
+    box-shadow: none; /* Elimina la sombra al enfocar */
+
+}
+
+/* Estilo del placeholder */
+.contenedor-form input::placeholder {
+    font-weight: 500;
+    font-family: sans-serif;
+}
+
+/* Botón */
+.contenedor-form button {
+    padding: 10px 40px;
+    margin-top: 40px;
+    border: 3px solid black;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #d1a8ff; /* Fondo blanco */
+    color: black;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 300ms ease;
+    width: 95%;
+    margin-left: -2px;
+    font-family: ROUND;
+}
+
+.contenedor-form button:hover {
+    background-color: #3E0D56;
+    color: #d1a8ff;
+}
+
+/* Formulario de login y registro */
+.log-form {
+    opacity: 1;
+    display: block;
+}
+
+.registro-form {
+    display: none;
+}
+
+/* Responsive */
+@media screen and (max-width: 850px) {
+    main {
+        margin-top: 50px;
+    }
+
+    .contenedor-mensaje {
+        max-width: 350px;
+        height: 300px;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .contenedor-mensaje div {
+        margin-top: 0px;
+        position: absolute;
+    }
+
+    /* Formulario responsive */
+    .contenedor-form {
+        margin: auto;
+        top: -10px;
+        left: -5px;
+    }
+
+    .contenedor-form form {
+        position: relative;
+    }
+}
+
+/* Mensajes de error */
+.contenedor-form p {
+    color: red;
+    font-size: 14px;
+    visibility: hidden; /* Ocultar por defecto */
+    margin-top: 8px; /* Separación del mensaje de error con el input */
+}
+
+/* Mantener tamaño fijo del mensaje de error */
+.contenedor-form p.error-message {
+    height: 14px; /* Altura fija para evitar que cambie el layout */
+}
+
+.contenedor-form p.error-message.visible {
+    visibility: visible;
+    margin-top: 8px; /* Espacio adicional entre el input y el mensaje de error */
+}
+
+
+/* ojo de la revelar contrasena*/
+.password-container button {
+    position: absolute;
+    right: 40px;
+    margin-top: 30px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+}
+
+.password-container button:hover {
+    background-color: transparent;
+    color: #7E70C2;
+}
