@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <script src="verificarSub.js" async></script>
+    <link rel="stylesheet" href="estilos1.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../../config/jquery-3.7.1.min.js"></script> 
+    <script src="../Navbar/navbarV.js" defer></script> 
+    <script src="../../Users/formularioV.js" defer></script>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <!-- Modal para registro -->
+    <div id="modal" class="modal">
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+
+
+    <!-- Barra de navegación con ícono de carrito -->
+    <nav class="navbar">
+        <h1>Tienda</h1>  
+    </nav>
+
+    <!-- Contenedor de productos -->
+    <div class="productos-container">
+        <h2>Productos</h2>
+        <div id="productos" class="productos-grid">
+            <!-- Los productos se cargarán aquí -->
+        </div>
+    </div>
+
+    <!-- JavaScript para manejar el carrito -->
+    <script src="productos.js"></script>
+    <script>
+        // Cargar productos al cargar la página
+        window.onload = cargarProductos;
+    </script>
+    <footer style="background: #333; width: 100%; color: white;">
+        <p>&copy; 2024 BITnessGYM. Todos los derechos reservados.;<br>
+          Click en el logo par ver la pagina
+        </p>
+          <!-- Enlace con botón e imagen -->
+        <a href="../../Raccoon_BITNESS/index.html">
+          <button class="image-button" style="background: transparent; border: transparent;">
+          <img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Example" style="width: 100px; cursor: pointer;">
+          </button>
+        </a>
+    </footer>
+
+</body>
+</html>

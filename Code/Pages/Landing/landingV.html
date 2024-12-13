@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BITness GYM</title>
+    <link rel="icon" href="../../assets/img/BITnessGYM_mini.png" type="image/png">
+    <script src="verificarSub.js"></script>
+
+    <!-- Enlaces unicos-->
+    <script src="landingC.js" defer></script> 
+    <script src="landingV.js" defer></script> 
+    <script src="../Navbar/navbarV.js" defer></script> 
+    <script src="../../Users/formularioV.js" defer></script>
+
+    <link rel="stylesheet" href="landing.css">  
+
+    <!-- Enlaces globales-->
+    <link rel="stylesheet" href="../../config/global.css">
+    <script src="../../config/jquery-3.7.1.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+  <div class="crt-overlay"></div>
+
+<div id="navbar-container"></div>
+    
+<!-- Modal para registro -->
+    <div id="modal" class="modal">
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+
+
+<section class="hero">
+  <header class="title">
+    <img src="../../assets/img/GAMEON.png" >
+    <h1 class="hero-texto">LLEVA TU <br>FUERZA <BR>AL SIGUIENTE <br> NIVEL</h1>
+  </header>
+
+  <img class="img-centro" src="../../assets/img/man_deadlift_man.png">
+  <img class="img-centro-ventana" src="../../assets/img/man_deadlift_win.png">
+  <img class="img-centro-ventana-fondo" src="../../assets/img/ventana_background.png">
+  <img class="img-bkhero" src="../../assets/img/hero_background.png">
+
+
+  <!-- Cinta horizontal señalando las suscripciones SUBSCARDS -->
+  <article class="marquee-container-real">
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <span>SUSCRIPCIONES $$$</span>
+        <img src="../../assets/img/arrow.png.png">
+        <span>SUSCRIPCIONES $$$</span>
+        <img src="../../assets/img/arrow.png.png">
+        <span>SUSCRIPCIONES $$$</span>
+        <img src="../../assets/img/arrow.png.png">
+        <span>SUSCRIPCIONES $$$</span>
+        <img src="../../assets/img/arrow.png.png">
+        <span>SUSCRIPCIONES $$$</span>
+        <img src="../../assets/img/arrow.png.png">
+        <span>SUSCRIPCIONES $$$</span>
+      </div>
+      <div class="marquee-content"> <!-- Duplicamos el contenido para el efecto infinito -->
+        <span>SUSCRIPCIONES $$$</span>
+        <img src="../../assets/img/arrow.png.png">
+        <span>SUSCRIPCIONES $$$</span>
+        <img src="../../assets/img/arrow.png.png">
+        <span>SUSCRIPCIONES $$$</span>
+        <img src="../../assets/img/arrow.png.png">
+        <span>SUSCRIPCIONES $$$</span>
+        <img src="../../assets/img/arrow.png.png">
+        <span>SUSCRIPCIONES $$$</span>
+        <img src="../../assets/img/arrow.png.png">
+        <span>SUSCRIPCIONES $$$</span>
+      </div>
+    </div>
+  </article>
+</section>
+
+
+
+    <!-- Sección de suscripciones  SUBSCARDS-->
+    <section class="subs">
+
+            <div class="details">
+                <h2> <SPAn><</SPAn>ELIJE TU SUSCRIPCION <SPAn>></SPAn> </h2>
+                <p>Descubre el plan que mejor se adapta a ti.</p>
+                <p>Ya sea que busques entrenamientos personalizados, acceso ilimitado a nuestras instalaciones o clases grupales, tenemos la opción perfecta para ayudarte a alcanzar tus metas. ¡Empieza hoy mismo!</p>
+                <p>¡Empieza hoy mismo!</p>
+              </div>
+        
+            <div class="grid">
+        
+                <!-- Tarjeta 1 -->
+        <div class="card" >
+            <div class="card-header" id="categoria1" >ESTÁNDAR</div>
+            <div class="card-body">
+                <h2><span>USD$</span><span id="precioMensual1" type="number">100</span></h2>
+                <p>per month</p>
+                <div class="divider"></div>
+                <h2><span>USD$</span><span id="precioAnual1"  type="number">100</span></h2>
+                <p>per year</p>
+                <div class="divider"></div>
+                <p id="descripcion1">1 actividades pagadas</p>
+            </div>
+            <div class="card-footer">
+             <button class="comprarSubBtn">
+                <button class="comprarSubBtn">Ir a Suscribirse</button>
+            </button>
+            </div>
+        </div>
+
+
+        <!-- Tarjeta 2 -->
+        <div class="card">
+            <div class="card-header" id="categoria2">AVANZADA</div>
+            <div class="card-body">
+                <h2><span>USD$</span><span id="precioMensual2" type="number">100</span></h2>
+                <p>per month</p>
+                <div class="divider"></div>
+                <h2><span>USD$</span><span id="precioAnual2" type="number">100</span></h2>
+                <p>per year</p>
+                <div class="divider"></div>
+                <p id="descripcion2">3 actividades pagadas</p>
+            </div>
+            <div class="card-footer">
+                <button class="guardar" data-carta="2">
+                    <a  href="../../Dashboards/Cliente/Suscripcion/suscripcionV.html">Ir a Suscribirse</a>
+                </button>
+            </div>
+        </div>
+        
+
+        <!-- Tarjeta 3 -->
+        <div class="card">
+            <div class="card-header" id="categoria3" contenteditable="true">HARDCORE</div>
+            <div class="card-body">
+                <h2><span>USD$</span><span id="precioMensual3" type="number">100</span></h2>
+                <p>per month</p>
+                <div class="divider"></div>
+                <h2><span>USD$</span><span id="precioAnual3" type="number">100</span></h2>
+                <p>per year</p>
+                <div class="divider"></div>
+                <p id="descripcion3">acceso a todas las máquinas</p>
+            </div>
+            <div class="card-footer">
+                <button class="guardar" data-carta="3">
+                    <a  href="../../Dashboards/Cliente/Suscripcion/suscripcionV.html">Ir a Suscribirse</a>
+                </button>
+            </div>
+        </div>
+        
+
+            </div>
+    </section>       
+        
+
+    <!-- seccion de explicacio de servicos SLIDESHOWS -->
+
+    <section class="slider-container">
+        <div class="slider-images">
+
+    
+          <div class="slider-img">
+            <picture>
+              <source style="filter: grayscale(80%);" media="(max-width: 426px)" srcset="../../assets/img/entrenamientos2.png">
+              <img style="filter: grayscale(80%);" src="../../assets/img/entrenamientos1.png" alt="1" />
+            </picture>
+            <h1 class="ent">ENTREAMIENTOS</h1>
+            <div class="slider-details">
+              <h2>ENTRENAMIENTOS</h2>
+              <p>Rutinas de ejercicio</p>
+            </div>
+          </div>
+
+          <div class="slider-img">
+            <picture>
+              <source style="filter: grayscale(80%);" media="(max-width: 426px)" srcset="../../assets/img/agenda2.png">
+              <img style="filter: grayscale(80%);" src="../../assets/img/agenda1.png" alt="2" />
+            </picture>
+            <h1>AGENDA</h1>
+            <div class="slider-details">
+              <h2>AGENDA</h2>
+              <p>Plan de entrenamientos</p>
+            </div>
+          </div>
+
+          <div class="slider-img">
+            <picture>
+              <source style="filter: grayscale(80%);" media="(max-width: 426px)" srcset="../../assets/img/stats2.png">
+              <img style="filter: grayscale(80%);" src="../../assets/img/stats1.png" alt="3" />
+            </picture>
+            <h1 style="left: -6vw;">ESTADISTICAS</h1>
+            <div class="slider-details">
+              <h2>ESTADISTICAS</h2>
+              <p>Datos de progreso</p>
+            </div>
+          </div>
+          <div class="slider-img active">
+            <picture>
+              <source style="filter: grayscale(80%);" media="(max-width: 426px)" srcset="../../assets/img/dieta2.png">
+              <img style="filter: grayscale(80%);" src="../../assets/img/dieta1.png" alt="4" />
+            </picture>
+            <h1>DIETA</h1>
+            <div class="slider-details">
+              <h2>DIETA</h2>
+              <p>Alimentacion fitness</p>
+            </div>
+          </div>
+          <div class="slider-img">
+            <picture>
+              <source style="filter: grayscale(80%);" media="(max-width: 426px)" srcset="../../assets/img/elo2.png">
+              <img style="filter: grayscale(80%);" src="../../assets/img/elo1.png" alt="5" />
+            </picture>
+            <h1>RANGO</h1>
+            <div class="slider-details">
+              <h2>RANGO</h2>
+              <p>Sistema de recompensas</p>
+            </div>
+          </div>
+      </section>
+
+
+      
+    <!-- Grid de productos estilo "bento" -->
+    <section id="product-grid">
+        <div class="grid-container"></div>
+    </section>
+    
+    <footer>
+	<a href="../../Raccoon_BITNESS/index.html">
+		<button class="image-button" style="background: transparent; border: transparent;">
+		<img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Raccoon" style="width: 100px; cursor: pointer;">
+		</button>
+	</a>
+	<p style="color: white;">&copy; 2024 BITnessGYM. Todos los derechos reservados
+   	</p>
+
+    </footer>
+
+
+    
+</body>
+</html>

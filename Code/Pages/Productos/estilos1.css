@@ -1,0 +1,77 @@
+/* Reseteo de estilos básicos */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo de la barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+}
+
+.cart-icon {
+    font-size: 24px; /* Tamaño del icono */
+    color: #fff; /* Color del icono para que se vea en fondo oscuro */
+    cursor: pointer;
+}
+
+#cart-count {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+/* Contenedor de productos */
+.productos-container {
+    padding: 20px;
+}
+
+.productos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Tarjeta de producto */
+.producto-card {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.producto-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Botón de agregar al carrito */
+.btn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
+
+footer {
+    padding: 20px;
+    background-color: #f1f1f1;
+    text-align: center;
+    width: 91%;
+  }
+  
