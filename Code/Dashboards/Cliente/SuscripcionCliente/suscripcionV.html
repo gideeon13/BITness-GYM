@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Suscripciones</title>
+    <link rel="icon" href="../../../assets/img/BITnessGYM_mini.png" type="image/png">
+
+    <!-- Enlaces PayPal-->
+    <script src="PayPal/procesar_pago.js"></script>
+    <link rel="stylesheet" href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=Adn7jJOtUQpG45ctKq98nPFbVApSwZzeyiFZ8P5xuISw8efH0gshGhz_E3kEkuHrK1_fwG1zScvUhiuU&currency=USD&components=buttons"></script>
+
+    <!-- Enlaces unicos-->
+     <script src="../Navbar/navbarV.js" defer></script> 
+    <link rel="stylesheet" href="suscripcion.css">
+    <script type="module" src="suscripcionC.js"></script>
+    <script type="module" src="../Landing/landingV.js"></script>
+    <script src="controlarSesion.js" defer></script>
+    <script src="../NavbarCliente/navbarV.js" defer></script>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Enlaces globales-->
+    <link rel="stylesheet" href="../../../config/global.css">
+    <script src="../../../config/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+
+
+    <!-- Contenedor principal de la página -->
+<main class="container">
+
+        <nav class="sidebar">
+            <h2>Ubicaciones</h2>
+            <div id="lista-ubicaciones"></div>
+        </nav>
+    
+        <div id="map"></div>
+
+       
+    <!-- Sección de suscripciones  SUBSCARDS-->
+    <section class="subs">
+
+
+        <div class="details">
+            <h2> <SPAn><</SPAn>ELIJE TU SUSCRIPCION <SPAn>></SPAn> </h2>
+            <p>Descubre el plan que mejor se adapta a ti.</p>
+            <p>Ya sea que busques entrenamientos personalizados, acceso ilimitado a nuestras instalaciones o clases grupales, tenemos la opción perfecta para ayudarte a alcanzar tus metas. ¡Empieza hoy mismo!</p>
+            <p>¡Empieza hoy mismo!</p>
+          </div>
+        
+            <div class="grid">
+        
+                <!-- Tarjeta 1 -->
+        <div class="card" data-tuplas="1,2">
+            <div class="card-header" id="categoria1" >ESTÁNDAR</div>
+            <div class="card-body">
+                <h2><span>USD$</span><span id="precioMensual1" type="number">100</span></h2>
+                <p>per month</p>
+                <div class="divider"></div>
+                <h2><span>USD$</span><span id="precioAnual1"  type="number">100</span></h2>
+                <p>per year</p>
+                <div class="divider"></div>
+                <p id="descripcion1">1 actividades pagadas</p>
+            </div>
+            <div class="card-footer">
+            <button class="comprarSubBtn">Seleccionar</button>
+            </div>
+        </div>
+
+
+        <!-- Tarjeta 2 -->
+        <div class="card" data-tuplas="3,4">
+            <div class="card-header" id="categoria2">AVANZADA</div>
+            <div class="card-body">
+                <h2><span>USD$</span><span id="precioMensual2" type="number">100</span></h2>
+                <p>per month</p>
+                <div class="divider"></div>
+                <h2><span>USD$</span><span id="precioAnual2" type="number">100</span></h2>
+                <p>per year</p>
+                <div class="divider"></div>
+                <p id="descripcion2">3 actividades pagadas</p>
+            </div>
+            <div class="card-footer">
+                <button class="guardar" data-carta="2">Seleccionar</button>
+            </div>
+        </div>
+        
+
+        <!-- Tarjeta 3 -->
+        <div class="card" data-tuplas="5,6">
+            <div class="card-header" id="categoria3" contenteditable="true">HARDCORE</div>
+            <div class="card-body">
+                <h2><span>USD$</span><span id="precioMensual3" type="number">100</span></h2>
+                <p>per month</p>
+                <div class="divider"></div>
+                <h2><span>USD$</span><span id="precioAnual3" type="number">100</span></h2>
+                <p>per year</p>
+                <div class="divider"></div>
+                <p id="descripcion3">acceso a todas las máquinas</p>
+            </div>
+            <div class="card-footer">
+                <button class="guardar" data-carta="3">Seleccionar</button>
+            </div>
+        </div>
+        
+
+            </div>
+    </section> 
+
+    <!-- Toggle para elegir mensual o anual -->
+     <label>anual:✔️  <br> mensual:❌</label>
+    <input type="checkbox" class="plan-button"></input>
+
+
+    <section id="toggle-section">
+        <h2>Selecciona el periodo de suscripción</h2>
+        <div class="toggle-container">
+            <label class="toggle-label">Mensual</label>
+            <button 
+                class="toggle"
+                role="switch"
+                aria-checked="false"
+                tabindex="0">
+                <div class="toggle-circle"></div>
+            </button>
+            <label class="toggle-label">Anual</label>
+        </div>
+    </section>
+    
+    
+
+
+    <!-- Contenedor del botón de PayPal -->
+    <section id="paypal-section">
+        <h2>Completa tu suscripción</h2>
+        <div id="payment_options"></div>
+        <div id="subscription_status"></div> <!-- Para mostrar el estado de la suscripción -->
+    </section>
+
+</section>
+
+
+
+<footer style="background: #333; width: 100%; color: white;">
+    <p>&copy; 2024 BITnessGYM. Todos los derechos reservados.;<br>
+      Click en el logo par ver la pagina
+    </p>
+      <!-- Enlace con botón e imagen -->
+      <a href="../../Raccoon_BITNESS/index.html">
+        <button class="image-button" style="background: transparent; border: transparent;">
+      <img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Example" style="width: 100px; cursor: pointer;">
+      </button>
+    </a>
+</footer>
+</body>
+</html>
+

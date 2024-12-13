@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <!-- Incluir SweetAlert2 -->
+    <script src="verificarSub.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=Adn7jJOtUQpG45ctKq98nPFbVApSwZzeyiFZ8P5xuISw8efH0gshGhz_E3kEkuHrK1_fwG1zScvUhiuU&currency=USD"></script>
+    <script src="../../../config/jquery-3.7.1.min.js"></script> 
+    <script src="../NavbarCliente/navbarV.js" async></script>
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="ProductosV.html">🡸	</a>
+    </nav>
+
+    <div class="container">
+        <h1>Carrito de Compras</h1>
+
+        <!-- Desglose del carrito -->
+        <div class="carrito-desglose">
+            <div class="productos-carrito">
+                <h2>Productos en tu carrito</h2>
+                <div id="productos-carrito">
+                    <!-- Los productos del carrito se mostrarán aquí dinámicamente -->
+                </div>
+            </div>
+
+            <div class="precio-carrito">
+                <h2>Resumen de Precio</h2>
+                <p><strong>Total sin IVA: $<span id="precio-sin-iva">0</span></strong></p>
+                <p><strong>Total con IVA (22%): $<span id="precio-con-iva">0</span></strong></p>
+                <div id="paypal-button-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: #333; width: 100%; color: white;">
+        <p>&copy; 2024 BITnessGYM. Todos los derechos reservados.;<br>
+          Click en el logo par ver la pagina
+        </p>
+          <!-- Enlace con botón e imagen -->
+          <a href="../../Raccoon_BITNESS/index.html">
+            <button class="image-button" style="background: transparent; border: transparent;">
+          <img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Example" style="width: 100px; cursor: pointer;">
+          </button>
+        </a>
+    </footer>
+
+    <!-- JavaScript del carrito -->
+    <script src="carrito.js" defer></script>
+</body>
+</html>

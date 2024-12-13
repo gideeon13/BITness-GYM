@@ -1,0 +1,120 @@
+/* Estilos para las cartas de productos */
+.producto-item {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.producto-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Imágenes de los productos */
+.producto-imagen {
+    width: 100%;
+    height: 200px; /* Altura fija para mantener la proporción */
+    object-fit: cover; /* Mantiene las proporciones de la imagen */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    margin-bottom: 15px; /* Espaciado entre la imagen y el contenido */
+}
+
+.producto-imagen:hover {
+    transform: scale(1.1);
+}
+
+/* Títulos de los productos */
+h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+/* Descripción y texto adicional */
+p {
+    color: #555;
+    font-size: 1rem;
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+/* Botones de las cartas */
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1rem;
+    align-self: center; /* Centrar el botón dentro de la carta */
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Contenedor de los productos */
+#productos_listado {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .producto-item {
+        max-width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    }
+}
+
+        /* Botón de carrito estilizado */
+        .cart-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .cart-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .cart-button i {
+            margin-right: 5px; /* Espaciado entre el ícono y el texto */
+        }
+
+        
+footer {
+    padding: 20px;
+    background-color: #f1f1f1;
+    text-align: center;
+    width: 91%;
+  }
+  

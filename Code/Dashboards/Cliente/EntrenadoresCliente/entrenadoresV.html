@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Entrenadores</title>
+    <script src="verificarSub.js" async></script>
+    <link rel="icon" href="../../../assets/img/BITnessGYM_mini.pn" type="image/png">
+
+    <!-- Enlaces únicos -->
+    <script src="entrenadoresC.js" defer></script>
+    <script src="entrenadoresV.js" defer></script>
+    <script src="../NavbarCliente/navbarV.js" defer></script> 
+
+    <link rel="stylesheet" href="entrenadores.css">
+
+    <!-- Enlaces globales -->
+    <link rel="stylesheet" href="../../config/global.css">
+    <script src="../../../config/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+</head>
+<main>
+    <div id="navbar-container"></div>
+
+    <!-- Buscador -->
+    <section class="window-frame search-section">
+        <div class="window-header">
+            <div class="window-dots">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="window-title">BITnessGYM.exe</div>
+        </div>
+        <div class="search-content">
+            <h1 class="retro-title">Encuentra tu entrenador ideal...</h1>
+            <div class="search-container">
+                <div class="search-box">
+                    <div class="search-header">BUSCAR.exe</div>
+                    <input type="text" class="search-input" placeholder="Buscar entrenadores por nombre, especialidad...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lista de Entrenadores -->
+    <section class="window-frame trainers-section">
+        <div class="window-header">
+            <div class="window-dots">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="window-title">ENTRENADORES.exe</div>
+        </div>
+        <div class="card-container"></div>
+    </section>
+
+    <!-- Perfil del Entrenador -->
+    <section class="window-frame profile-section">
+        <div class="window-header">
+            <div class="window-dots">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="window-title">PERFIL.exe</div>
+        </div>
+        <div class="profile-content">
+            <div class="profile-info">
+                <div class="trainer-header">
+                    <img id="profileImage" src="" alt="Trainer" class="profile-pic">
+                    <div class="trainer-basic-info">
+                        <h2 id="profileName"></h2>
+                        <p id="profileDetails" class="trainer-bio"></p>
+                        <p id="profileNumber" class="trainer-bio"></p>
+                    </div>
+                </div>
+                
+                <div class="trainer-stats">
+                    <div class="stat">⭐ Rating: 4.9</div>
+                    <div id="profileExperience" class="stat"></div>
+                    <div id="profileFormat" class="stat"></div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Especialidades</h3>
+                    <div id="profileSpecialty" class="tags"></div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Disponibilidad</h3>
+                    <div id="profileAvailability" class="availability"></div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Certificaciones</h3>
+                    <div id="profileCertifications" class="certifications"></div>
+                </div>
+
+                <button id="connectBtn" class="connect-btn">Conectar con Entrenador</button>
+            </div>
+
+            <div class="profile-gallery">
+                <div class="carousel-container">
+                    <div class="carousel-nav">
+                        <button class="carousel-btn prev">❮</button>
+                        <button class="carousel-btn next">❯</button>
+                    </div>
+                    <div  class="carousel-dots"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer style="background: #333; width: 100%; color: white;">
+    <p>&copy; 2024 BITnessGYM. Todos los derechos reservados.;<br>
+      Click en el logo par ver la pagina
+    </p>
+      <!-- Enlace con botón e imagen -->
+      <a href="../../Raccoon_BITNESS/index.html">
+        <button class="image-button" style="background: transparent; border: transparent;">
+      <img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Example" style="width: 100px; cursor: pointer;">
+      </button>
+    </a>
+</footer>
+</body>
+</html>

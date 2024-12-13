@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mi perfil</title>
+    <script src="verificarSub.js" async></script>
+    <link rel="icon" href="../../assets/img/BITnessGYM_mini.png" type="image/png">
+
+    <script src="../NavbarCliente/navbarV.js" defer></script>
+
+    <!-- Enlaces únicos --> 
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script> 
+
+    <link rel="stylesheet" href="miperfil.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/main.min.css" rel="stylesheet">
+
+    <!-- Enlaces globales -->
+    <link rel="stylesheet" href="../../../config/global.css">
+    <script src="../../../config/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="miperfilV.js" defer></script>
+</head>
+<body>
+<div id="navbar-container"></div>
+
+    <div class="container">
+        <h1>Mi Perfil</h1>
+
+        <!-- Sección de perfil -->
+        <div class="profile-row">
+            <img id="profile-photo" src="" alt="Foto de perfil">
+            <div class="profile-info">
+                <h2 id="user-name">Nombre Usuario</h2>
+                <p id="user-description">Descripción del Usuario</p>
+                <p><strong>Altura:</strong> <span id="user-height">0</span> cm</p>
+                <p><strong>Peso:</strong> <span id="user-weight">0</span> kg</p>
+                <p><strong>Edad:</strong> <span id="user-age">0</span> años</p>
+                <p><strong>Género:</strong> <span id="user-gender">Desconocido</span></p>
+                <p><strong>Nivel de Actividad:</strong> <span id="user-activity-level">Desconocido</span></p>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="btn-edit-profile" class="btn btn-edit">Editar Perfil</button>
+            <button id="btn-delete-account" class="btn btn-delete">Eliminar Cuenta</button>
+            <button id="btn-logout" class="btn btn-cancel" onclick="window.location.href='../../../Users/Sesiones/logout.php';">Cerrar Sesión</button>
+        </div>
+        
+        <!-- Add this after the profile-row div -->
+        <div class="bmi-info">
+            <h3>Índice de Masa Corporal (IMC)</h3>
+            <p>Tu IMC: <span id="bmi-value">0</span></p>
+            <p>Categoría: <span id="bmi-category">-</span></p>
+        </div>
+
+        <!-- Sección de estadísticas -->
+        <div class="stats-row">
+            <div class="badge">
+                <img id="badge-image" src="../../../assets/img/elou.png" alt="Badge">
+            </div>
+            <div class="progress-section">
+                <div class="circle-progress" id="circle-progress">0%</div>
+                <div class="bar-container">
+                    <div class="bar">
+                        <label>Proteínas</label>
+                        <div class="bar-fill" id="protein-bar"></div>
+                    </div>
+                    <div class="bar">
+                        <label>Carbs</label>
+                        <div class="bar-fill" id="carbs-bar"></div>
+                    </div>
+                    <div class="bar">
+                        <label>Grasas</label>
+                        <div class="bar-fill" id="fats-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de calendario -->
+        <div id="calendar"></div>
+        <div class="body-image">
+            <img id="body-image" src="cuerpo.png" alt="Cuerpo">
+        </div>
+
+        <!-- Sección de músculos -->
+        <div class="muscle-grid">
+            <div class="muscle-box add-button" draggable="true">+</div>
+            <div class="muscle-box" id="muscle-1" draggable="true"><img src="" alt="Músculo 1"></div>
+            <div class="muscle-box" id="muscle-2" draggable="true"><img src="" alt="Músculo 2"></div>
+            <div class="muscle-box" id="muscle-3" draggable="true"><img src="" alt="Músculo 3"></div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar eventos -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Agregar Evento</h2>
+            <form id="event-form">
+                <label for="event-title">Título del evento:</label>
+                <input type="text" id="event-title" required>
+                <button type="submit">Agregar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sección de gráficos -->
+    <div class="charts-section">
+        <div class="chart">
+            <h3>Gráfico 1</h3>
+            <canvas id="chart1"></canvas>
+        </div>
+        <div class="chart">
+            <h3>Gráfico 2</h3>
+            <canvas id="chart2"></canvas>
+        </div>
+    </div>
+
+    <footer style="background: #333; width: 100%; color: white;">
+        <p>&copy; 2024 BITnessGYM. Todos los derechos reservados.;<br>
+          Click en el logo par ver la pagina
+        </p>
+          <!-- Enlace con botón e imagen -->
+          <a href="../../Raccoon_BITNESS/index.html">
+            <button class="image-button" style="background: transparent; border: transparent;">
+          <img src="../../assets/img/LOGOMAPACHE.png" alt="Enlace a Example" style="width: 100px; cursor: pointer;">
+          </button>
+        </a>
+    </footer>
